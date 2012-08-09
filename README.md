@@ -27,5 +27,7 @@ You can set contentHtml or the url. If contentHtml is set, the contents will be 
 window as-is. If url is set, then the page will be loaded into an iframe within the window.
 Parameteres are json parameters to be passed into the iframe (including callbacks, etc). Note that
 same origin policy applies. <br>
+<br>
+For a working demo, check out <a href='http://www.bbroerman.net/popups/popuptest.html'> This Link </a>
 
  
