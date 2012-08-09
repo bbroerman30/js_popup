@@ -1,0 +1,35 @@
+<html>
+<head> 
+   <title> Inline Popup Test </title> 
+   <script type='text/javascript' src='inlinepopups.js'></script>
+   <script type='text/javascript'>
+       function openWindow( title, content )
+       {
+           var newPopup = new Popup( 10, 10, 382, 150	 ,title, "MAX|MIN|RESIZE|FOCUS|MOVE", null,"iframetest.html", { name: "etst", showstatuscallback: function() {newPopup.showStatusbar();},hidestatuscallback: function() {newPopup.hideStatusbar();},setstatuscallback: function(msg) {newPopup.setStatusText(msg)}  } );  
+           newPopup.show();     
+       }
+   
+       var lastWindowId = 0;
+       function openWindowBtn()
+       {
+           lastWindowId += 1;
+           
+           openWindow( "Window number " + lastWindowId , "Content for window number " + lastWindowId );
+       }
+   
+   </script>
+</head>
+<body>
+   <h2> Inline Popups test page. </h2>
+   <br>
+   <form action='#' method='post'> <button id='new' name='newpopup' onClick='openWindowBtn(); return false;'> New Popup </button> </form>
+   <br>
+   <div id='stat'> </div>
+   <!-- Create a couple of initial popup windows... -->
+   <script type='text/javascript'>
+      openWindowBtn();
+      setTimeout( 'openWindowBtn();', 100 );
+   </script>
+   <br>
+</body>
+</html>

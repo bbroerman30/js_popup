@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>New Directory</title>
+	<script type='text/javascript' src='popup.js'></script>	
+</head>
+<body id="advimage">
+    <form onsubmit="return false;" id='fm' action="#"> 
+    <div>
+    <table class="properties">
+      <tr>
+	    <td class="column1" style='width:90px'><label id="namelabel" for="name">New Text:</label></td> 
+		<td colspan="2" ><input id="name" name="name" type="text" value="" style='width:250px' /></td> 
+	  </tr>
+	</table>
+    </div>
+    <br>
+	<div class="mceActionPanel">
+		<div style="float: left">
+			<input type="submit" id="insert" name="insert" value="Ok" onClick='setStatus();return false;' />
+		</div>
+		<div style="float: right">
+			<input type="button" id="cancel" name="cancel" value="Cancel" onclick="inlinePopup.close();" />
+			<input type="button" id="status" name="status" value="Show Status" onclick="showStatus();return false;" />
+			<input type="button" id="status" name="status" value="Hide Status" onclick="hideStatus();return false;" />
+		</div>
+	</div>
+  </form> 
+  
+  <script type='text/javascript'>
+      document.getElementById('name').value = inlinePopup.getWindowArg('name');
+	  function showStatus()
+	  {
+	      var callbackFn = inlinePopup.getWindowArg('showstatuscallback');
+		  callbackFn();
+	  }
+	  function hideStatus()
+	  {
+	      var callbackFn = inlinePopup.getWindowArg('hidestatuscallback');
+		  callbackFn();
+	  }
+	  function setStatus()
+	  {
+	      var callbackFn = inlinePopup.getWindowArg('setstatuscallback');
+		  var text = document.getElementById('fm').name.value;
+		  
+		  callbackFn(text);
+	  }
+  </script>   
+</body>
+</html>
+
